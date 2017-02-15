@@ -1,7 +1,12 @@
 var express = require('express')
 var mongoose = require('mongoose');
+var bodyParser = require("body-parser");
 
 var app = express()
+
+var port = (process.env.PORT || 4000);
+
+app.use(bodyParser.json())
 
 var SchemaOb = new mongoose.Schema({
     userName: String,
@@ -41,9 +46,13 @@ app.get('/home', function (req, res) {
     res.send('home')
 })
 
-app.listen(3000, function () {
-    console.log('Example app listening on port 3000!')
+app.listen(4000, function () {
+    console.log('Example app listening on port 4000!')
 })
 
 
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://pkbilal:6363@ds153689.mlab.com:53689/express-15-2-17');
+
+mongoose.connection.on('connected', function () {
+    console.log("Mongoose is connected");
+});
