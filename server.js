@@ -15,7 +15,7 @@ var SchemaOb = new mongoose.Schema({
 });
 
 
-var SchemaObModel = mongoose.model('bilalSchema', SchemaOb);
+var SchemaObModel = mongoose.model('SchemaModel', SchemaOb);
 
 
 app.post('/post', function (req, res) {
