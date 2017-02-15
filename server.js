@@ -7,6 +7,7 @@ var app = express()
 var port = process.env.PORT || 5000
 
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({	extended: true })); // support encoded bodies
 
 var SchemaOb = new mongoose.Schema({
     userName: String,
@@ -24,26 +25,32 @@ app.post('/post', function (req, res) {
         firstName: req.body.firstName,
         lastName: req.body.lastName
     })
-    schemaObModelOb.save(function(err,data){
-        if(!err){
+    schemaObModelOb.save(function (err, data) {
+        if (!err) {
             res.send("schemaObModelOb-Object is saved")
             console.log("Object is saved")
-        }else{
+        } else {
             console.log("Object saving failed");
             req.send("Object saving failed")
         }
     })
 })
+app.get('/post', function (req, res) {
+    var userName = req.param("userName");
+    var firstName = req.param("firstName");
+    var lastName = req.param("lastName");
+    res.send(userName + ' ' + firstName + ' ' + lastName);
+});
 
-
-
+var list = [
+    "Bilal", "ahmad", "akram", "khalid", "jameel", "mubashhir", "inaam", "arslan", "zamin"
+]
 
 app.get('/', function (req, res) {
     res.send('Hello Karachi 15-2-17')
 })
-
 app.get('/home', function (req, res) {
-    res.send('home')
+    res.send(list)
 })
 
 app.listen(port, function () {
