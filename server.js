@@ -4,7 +4,7 @@ var bodyParser = require("body-parser");
 
 var app = express()
 
-var port = (process.env.PORT || 4000);
+var port = (process.env.PORT || 5000);
 
 app.use(bodyParser.json())
 
@@ -42,9 +42,12 @@ app.get('/', function (req, res) {
     res.send('Hello Karachi 15-2-17')
 })
 
+app.get('/home', function (req, res) {
+    res.send('home')
+})
 
-app.listen(4000, function () {
-    console.log('Example app listening on port 4000!')
+app.listen(5000, function () {
+    console.log('Example app listening on port 5000!')
 })
 
 
