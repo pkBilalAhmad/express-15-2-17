@@ -42,9 +42,6 @@ app.get('/', function (req, res) {
     res.send('Hello Karachi 15-2-17')
 })
 
-app.get('/home', function (req, res) {
-    res.send('home')
-})
 
 app.listen(4000, function () {
     console.log('Example app listening on port 4000!')
